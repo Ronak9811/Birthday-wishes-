@@ -21,113 +21,172 @@
   .page.active { display: flex; }
 
   /* ========== PAGE 1: LOGIN ========== */
+  /* ========== PAGE 1: SIGN IN ========== */
   #page-login {
-    background: var(--dark);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
+    min-height: 100vh;
+    background: #07071a;
+  }
+  .signin-bg {
+    width: 100%; min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 5% 40%, rgba(90,20,200,0.55) 0%, transparent 45%),
+      radial-gradient(ellipse at 95% 25%, rgba(30,50,200,0.45) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 85%, rgba(110,20,200,0.3) 0%, transparent 40%),
+      #07071a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
   }
-  #page-login::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(230,57,70,0.05) 0%, transparent 50%);
+  .glare {
+    position: absolute;
+    width: 3px;
+    border-radius: 4px;
+    opacity: 0.2;
     pointer-events: none;
   }
-  .scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
-    pointer-events: none; z-index: 1;
+  .glare-1 {
+    height: 55vh;
+    background: linear-gradient(to bottom, rgba(140,80,255,0), rgba(140,80,255,1), rgba(140,80,255,0));
+    top: 5%; left: 8%;
+    transform: rotate(-35deg);
   }
-  .login-container {
-    position: relative; z-index: 2;
-    width: 100%; max-width: 480px;
-    border: 1px solid rgba(255,215,0,0.3);
-    padding: 40px 36px;
-    background: rgba(255,255,255,0.02);
-    backdrop-filter: blur(10px);
-    animation: fadeInDown 0.8s ease both;
+  .glare-2 {
+    height: 65vh;
+    background: linear-gradient(to bottom, rgba(80,120,255,0), rgba(80,120,255,1), rgba(80,120,255,0));
+    top: 10%; right: 6%;
+    transform: rotate(30deg);
   }
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+  .glare-3 {
+    height: 45vh;
+    background: linear-gradient(to bottom, rgba(160,60,255,0), rgba(160,60,255,1), rgba(160,60,255,0));
+    bottom: 5%; right: 18%;
+    transform: rotate(25deg);
   }
-  .login-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--dark);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    padding: 4px 12px;
-    margin-bottom: 20px;
+  .signin-card {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 400px;
+    background: rgba(10,10,30,0.8);
+    border: 1px solid rgba(100,70,220,0.22);
+    border-radius: 22px;
+    padding: 32px 24px 24px;
+    backdrop-filter: blur(24px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 20px 60px rgba(0,0,0,0.6);
+    animation: fadeInDown 0.7s ease both;
   }
-  .login-title {
-    font-family: 'Playfair Display', serif;
-    color: var(--cream);
-    font-size: clamp(24px, 5vw, 34px);
-    line-height: 1.1;
-    margin-bottom: 6px;
+  .signin-avatar {
+    width: 72px; height: 72px;
+    background: linear-gradient(145deg, #5b2fd4, #7c3aed);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 6px 24px rgba(91,47,212,0.55);
   }
-  .login-subtitle {
-    color: rgba(245,240,232,0.4);
-    font-size: 13px;
-    margin-bottom: 32px;
-    letter-spacing: 0.5px;
-  }
-  .field-group { margin-bottom: 16px; }
-  .field-group label {
-    display: block;
-    color: rgba(255,215,0,0.7);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-  }
-  .field-group input {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,215,0,0.2);
-    color: var(--cream);
-    padding: 12px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  .field-group input:focus { border-color: var(--gold); }
-  .field-group input::placeholder { color: rgba(245,240,232,0.2); }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .login-btn {
-    width: 100%;
-    margin-top: 24px;
-    background: var(--gold);
-    color: var(--dark);
-    border: none;
-    padding: 16px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .login-btn:hover { background: #ffe840; transform: translateY(-1px); }
-  .login-btn:active { transform: translateY(0); }
-  .error-msg {
-    color: var(--red);
-    font-size: 12px;
-    margin-top: 12px;
+  .signin-title {
+    font-family: "DM Sans", sans-serif;
+    font-size: 30px; font-weight: 800;
+    color: #ffffff;
     text-align: center;
-    min-height: 18px;
+    margin-bottom: 10px;
+  }
+  .signin-sub { display: none; }
+  .signin-underline {
+    width: 42px; height: 3px;
+    background: linear-gradient(to right, #6d28d9, #c084fc);
+    border-radius: 3px;
+    margin: 0 auto 22px;
+  }
+  .si-field-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px; font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+  .si-input-wrap {
+    display: flex; align-items: center;
+    background: rgba(8,8,25,0.85);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    position: relative;
+    height: 58px;
+  }
+  .si-input-wrap:focus-within { border-color: rgba(109,40,217,0.55); }
+  .si-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(145deg, #4c1d95, #6d28d9);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin: 3px;
+  }
+  .si-input {
+    flex: 1;
+    background: transparent;
+    border: none; outline: none;
+    color: rgba(255,255,255,0.85);
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px; font-weight: 300;
+    padding: 0 14px 0 10px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .si-input::placeholder { color: rgba(255,255,255,0.25); }
+  .si-input option { background: #12123a; color: white; }
+  .si-select { appearance: none; cursor: pointer; }
+  .si-select-wrap { cursor: pointer; }
+  .si-chevron {
+    position: absolute; right: 14px;
+    pointer-events: none;
+    display: flex; align-items: center;
+  }
+  .si-error {
+    color: #f87171;
+    font-size: 12px;
+    text-align: center;
+    min-height: 14px;
+    margin-bottom: 8px;
+    font-family: "DM Sans", sans-serif;
     font-style: italic;
   }
+  .si-submit-btn {
+    width: 100%;
+    padding: 17px 24px;
+    background: linear-gradient(to right, #5b21b6, #7c3aed, #6d28d9);
+    border: none; border-radius: 12px;
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    font-size: 17px; font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.2s;
+    box-shadow: 0 6px 24px rgba(91,33,182,0.55);
+    margin-top: 4px;
+  }
+  .si-submit-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 32px rgba(91,33,182,0.7); }
+  .scanlines { display: none; }
+  .modal-continue {
+    background: linear-gradient(135deg, #6d28d9, #a855f7);
+    color: white; border: none;
+    padding: 18px 0; width: 100%;
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    border-radius: 10px; margin-top: 36px;
+    letter-spacing: 1px; display: block;
+    box-shadow: 0 4px 20px rgba(109,40,217,0.4);
+  }
+  .modal-continue:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(109,40,217,0.6); }
 
   /* Loading overlay */
   #loading-overlay {
@@ -171,61 +230,49 @@
 
   /* ========== PAGE 2: FLAPPY BIRD ========== */
   #page-game {
-    background: #1a1a2e;
+    background: #0d0d1f;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    position: relative;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .game-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
   .game-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .game-title {
     font-family: 'Bebas Neue', sans-serif;
     color: var(--gold);
-    font-size: clamp(28px, 6vw, 48px);
+    font-size: clamp(24px, 5vw, 40px);
     letter-spacing: 4px;
-    text-align: center;
-    margin-bottom: 8px;
   }
-  .game-subtitle {
-    color: rgba(245,240,232,0.4);
+  .game-goal {
+    color: rgba(245,240,232,0.55);
     font-size: 13px;
-    text-align: center;
-    margin-bottom: 24px;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
   }
   #gameCanvas {
     display: block;
-    border: 2px solid rgba(255,215,0,0.4);
+    border: 2px solid rgba(255,215,0,0.35);
     cursor: pointer;
     max-width: 100%;
+    border-radius: 8px;
   }
   .game-controls {
-    margin-top: 16px;
+    margin-top: 14px;
     display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
   }
-  .game-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 28px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .game-btn:hover { background: var(--gold); color: var(--dark); }
-  .next-btn-game {
-    background: var(--gold);
-    border: 1px solid var(--gold);
-    color: var(--dark);
-    padding: 10px 28px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .next-btn-game:hover { background: #ffe840; }
+
+
 
   /* ========== PAGE 3: FINALE ========== */
   #page-finale {
@@ -358,107 +405,231 @@
   /* ========== PAGE 0: DARK INTRO ========== */
   #page-dark {
     background: #000;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     min-height: 100vh;
+    padding-bottom: 48px;
   }
   .dark-intro {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     width: 100%;
-    height: 100vh;
   }
   .light-box {
-    border: 2px solid rgba(255,255,255,0.15);
-    padding: 32px 56px;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 10px 24px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 14px;
+    gap: 8px;
     cursor: pointer;
     transition: all 0.3s;
     animation: breathe 2.5s ease infinite;
   }
   .light-box:hover {
-    border-color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.45);
     background: rgba(255,255,255,0.04);
   }
   @keyframes breathe {
-    0%,100% { box-shadow: 0 0 10px rgba(255,255,255,0.05); }
-    50% { box-shadow: 0 0 30px rgba(255,255,255,0.15); }
+    0%,100% { box-shadow: 0 0 8px rgba(255,255,255,0.04); }
+    50% { box-shadow: 0 0 18px rgba(255,255,255,0.12); }
   }
-  .light-icon { font-size: 48px; }
+  .light-icon { font-size: 18px; }
   .light-text {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.5);
     font-family: "Bebas Neue", sans-serif;
-    font-size: 18px;
-    letter-spacing: 4px;
+    font-size: 13px;
+    letter-spacing: 3px;
   }
 
-  /* ========== PAGE 0.5: LIGHT REVEAL ========== */
+  /* ========== PAGE 0.5: SPLIT CHOICE ========== */
   #page-light {
-    background: linear-gradient(135deg, #a8d8f0 0%, #c5e8f7 40%, #b8ddf5 100%);
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .split-screen {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Global header floats above both panels */
+  .split-global-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+    gap: 10px;
+  }
+  .split-global-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(14px, 2.8vw, 26px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    margin-bottom: 0;
+    /* two-tone: left half white on black, right half black on cream */
+    background: linear-gradient(to right, #f0ece4 50%, #0f0f0f 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+  }
+  .split-global-line {
+    width: 48px; height: 1px;
+    background: #c9a96e;
+  }
+
+  /* Panels */
+  .split-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 88px 20px 20px;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .split-black { background: #0f0f0f; }
+  .split-white { background: #f0ece4; }
+
+  /* Cards — scale to fill available space */
+  .choice-card {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 14px;
+    padding: 20px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .card-black {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .card-white {
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+  }
+
+  /* I GOT label */
+  .card-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2px;
+    font-weight: 300;
+  }
+  .card-label-dark { color: rgba(15,10,5,0.5); }
+
+  /* BLACK / WHITE heading */
+  .card-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .card-title-black { color: #ffffff; }
+  .card-title-white { color: #0f0f0f; }
+
+  /* Gold underline */
+  .card-gold-line {
+    width: 32px; height: 1.5px;
+    background: #c9a96e;
+    margin-bottom: 16px;
+  }
+
+  /* Feature list */
+  .card-features {
+    list-style: none;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .card-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: "DM Sans", sans-serif;
+    font-size: clamp(11px, 1.4vw, 14px);
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    letter-spacing: 0.2px;
+  }
+  .card-features li:last-child { border-bottom: none; }
+  .card-features-dark li {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    color: rgba(15,10,5,0.75);
+  }
+  .card-features-dark li:last-child { border-bottom: none; }
+  .feat-icon { font-size: 17px; min-width: 24px; text-align: center; }
+
+  /* Buttons */
+  .choose-btn {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2px;
+  }
+  .choose-btn-black {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(201,169,110,0.6);
+  }
+  .choose-btn-black:hover { background: rgba(201,169,110,0.1); color: #fff; border-color: #c9a96e; }
+  .choose-btn-white {
+    background: transparent;
+    color: rgba(15,10,5,0.75);
+    border: 1px solid rgba(15,10,5,0.3);
+  }
+  .choose-btn-white:hover { background: rgba(0,0,0,0.04); color: #0f0f0f; }
+
+  /* White result page */
+  #page-white-result {
+    background: #0a1628;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    animation: lightFlash 0.5s ease;
   }
-  @keyframes lightFlash {
-    0% { background: #fff; }
-    100% { background: linear-gradient(135deg, #a8d8f0 0%, #c5e8f7 40%, #b8ddf5 100%); }
-  }
-  .light-content {
-    text-align: center;
-    animation: fadeInDown 0.6s ease both;
-  }
-  .light-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.6);
-    color: #1a4a6e;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    padding: 4px 16px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-  }
-  .light-title {
-    font-family: "Playfair Display", serif;
-    color: #0d2e4a;
-    font-size: clamp(36px, 8vw, 64px);
-    line-height: 1.15;
-    margin-bottom: 40px;
+  .white-result-content { text-align: center; animation: fadeInDown 0.6s ease both; }
+  .white-emoji { font-size: 80px; margin-bottom: 20px; }
+  .white-result-title {
+    font-family: "DM Sans", sans-serif;
+    color: #1a1208;
+    font-size: 64px;
     font-weight: 900;
+    margin-bottom: 12px;
   }
-  .colour-options {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .colour-btn {
-    padding: 18px 48px;
-    font-family: "Bebas Neue", sans-serif;
+  .white-result-msg {
+    color: rgba(30,20,10,0.5);
     font-size: 22px;
-    letter-spacing: 3px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 2px;
+    font-style: italic;
   }
-  .black-btn {
-    background: #0a0a0a;
-    color: #FFD700;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-  .black-btn:hover { background: #1a1a1a; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
-  .other-btn {
-    background: rgba(255,255,255,0.5);
-    color: #0d2e4a;
-    border: 2px solid rgba(13,46,74,0.2);
-  }
-  .other-btn:hover { background: rgba(255,255,255,0.8); }
 
   /* ========== PHOTO MODAL ========== */
   .photo-modal {
@@ -504,6 +675,14 @@
   }
   .modal-next:hover { background: #ffe840; }
 
+  .height-joke {
+    color: #f87171;
+    font-size: 12px;
+    font-family: "DM Sans", sans-serif;
+    margin-top: -10px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
 </style>
 </head>
 <body>
@@ -530,475 +709,28 @@
 
   <!-- PAGE 0.5: LIGHT REVEAL -->
   <div class="page" id="page-light">
-    <div class="light-content">
-      <div class="light-badge">🔍 IDENTITY CLUE #1</div>
-      <div class="light-title">Lights on...<br/>I got</div>
-      <div class="colour-options">
-        <button class="colour-btn black-btn" onclick="showColourPhoto()">Black</button>
-        <button class="colour-btn other-btn" onclick="goToLogin()">Something else</button>
+    <div class="split-screen">
+
+      <!-- HEADER centered across both panels -->
+      <div class="split-global-header">
+        <div class="split-global-title">WHAT YOU WANT ?</div>
+        <div class="split-global-line"></div>
       </div>
-    </div>
-  </div>
 
-  <!-- Photo Modal -->
-  <div id="photoModal" class="photo-modal" onclick="closeModal()">
-    <div class="modal-inner" onclick="event.stopPropagation()">
-      <img id="modalImg" src="./Ishowspeed.png"><div class="modal-caption">🤣 EVIDENCE CONFIRMED. CASE CLOSED.</div>
-      <button class="modal-next" onclick="closeModal()">OK OK... Continue →</button>
-    </div>
-  </div>
-
-
-  <!-- PAGE 1: LOGIN -->
-<div class="page" id="page-login">
-  <div class="scanlines"></div>
-  <div class="login-container">
-    <div class="login-badge">🔐 TOP SECRET CLEARANCE REQUIRED</div>
-    <div class="login-title">Identify Yourself,<br/>Birthday Boy.</div>
-    <div class="login-subtitle">Our systems require full biometric verification before proceeding.</div>
-
-    <div class="field-group">
-      <label>Your Full Name</label>
-      <input type="text" id="inp-name" placeholder="As your mother screams it..."/>
-    </div>
-    <div class="field-row">
-      <div class="field-group">
-        <label>Father's Name</label>
-        <input type="text" id="inp-father" placeholder="The legend himself"/>
+      <!-- LEFT: BLACK -->
+      <div class="split-panel split-black">
+        <div class="choice-card card-black">
+          <div class="card-label">I GOT</div>
+          <div class="card-title card-title-black">BLACK</div>
+          <div class="card-gold-line"></div>
+          <ul class="card-features">
+            <li><span class="feat-icon">🌡️</span><span>Absorb heat five times faster</span></li>
+            <li><span class="feat-icon">🌍</span><span>Save global warming</span></li>
+            <li><span class="feat-icon">💧</span><span>Water efficient</span></li>
+            <li><span class="feat-icon">🌙</span><span>Nightmare for night itself</span></li>
+          </ul>
+          <button class="choose-btn choose-btn-black" onclick="showColourPhoto()">CHOOSE BLACK &nbsp;&nbsp;→</button>
+        </div>
       </div>
-      <div class="field-group">
-        <label>Mother's Name</label>
-        <input type="text" id="inp-mother" placeholder="Your true boss"/>
-      </div>
-    </div>
-    <div class="field-row">
-      <div class="field-group">
-        <label>Your Age</label>
-        <input type="number" id="inp-age" placeholder="Be honest..."/>
-      </div>
-      <div class="field-group">
-        <label>Height (cm)</label>
-        <input type="number" id="inp-height" placeholder="Stand straight!"/>
-      </div>
-    </div>
-    <div class="field-row">
-      <div class="field-group">
-        <label>Weight (kg)</label>
-        <input type="number" id="inp-weight" placeholder="Don't lie 😏"/>
-      </div>
-      <div class="field-group">
-        <label>Skin Colour</label>
-        <input type="text" id="inp-skin" placeholder="e.g. Wheatish, Fair..."/>
-      </div>
-    </div>
 
-    <button class="login-btn" onclick="attemptLogin()">GRANT ME ACCESS →</button>
-    <div class="error-msg" id="errorMsg"></div>
-  </div>
-</div>
-
-<!-- PAGE 2: FLAPPY BIRD -->
-<div class="page" id="page-game">
-  <div class="game-header">FLAPPY <span id="game-name-display">BIRTHDAY BOY</span></div>
-  <div class="game-subtitle">Tap / Space / Click to flap. Don't die. (You will die.)</div>
-  <canvas id="gameCanvas" width="380" height="500"></canvas>
-  <div class="game-controls">
-    <button class="game-btn" onclick="resetGame()">↺ RESTART</button>
-    <button class="next-btn-game" onclick="goToFinale()">SKIP TO FINALE →</button>
-  </div>
-</div>
-
-<!-- PAGE 3: FINALE -->
-<div class="page" id="page-finale">
-  <div class="confetti-wrap" id="confettiWrap"></div>
-  <div class="age-reveal" id="ageReveal"></div>
-  <div class="finale-content">
-    <div class="finale-badge">🎂 HAPPY BIRTHDAY</div>
-    <div class="finale-photo-wrap" id="finalePhotoWrap">
-      <div class="photo-placeholder">
-        🎂
-        <span>PHOTO HERE</span>
-      </div>
-    </div>
-    <div class="finale-name" id="finaleName">The Legend Himself</div>
-    <div class="finale-gold-line"></div>
-    <div class="finale-msg" id="finaleMsg">
-      Another year older, another year more legendary.<br/>
-      May your day be as extraordinary as you are — almost.
-    </div>
-    <button class="music-btn" onclick="toggleMusic()">
-      <span class="music-note" id="musicNote">♪</span> &nbsp;PLAY BIRTHDAY SONG
-    </button>
-  </div>
-</div>
-
-<!-- Hidden audio -->
-<audio id="birthdayAudio" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"/>
-</audio>
-
-<script>
-// ===================== STATE =====================
-let userData = {};
-let gameRunning = false;
-let gameOver = false;
-let animFrame;
-let score = 0;
-let bestScore = 0;
-let musicPlaying = false;
-
-// ===================== LOGIN =====================
-function attemptLogin() {
-  const name = document.getElementById('inp-name').value.trim();
-  const father = document.getElementById('inp-father').value.trim();
-  const mother = document.getElementById('inp-mother').value.trim();
-  const age = document.getElementById('inp-age').value.trim();
-  const height = document.getElementById('inp-height').value.trim();
-  const weight = document.getElementById('inp-weight').value.trim();
-  const skin = document.getElementById('inp-skin').value.trim();
-  const err = document.getElementById('errorMsg');
-
-  if (!name || !father || !mother || !age || !height || !weight || !skin) {
-    err.textContent = "⚠ Our surveillance team needs ALL fields filled. No escaping.";
-    return;
-  }
-  err.textContent = '';
-  userData = { name, father, mother, age, height, weight, skin };
-  showLoading();
-}
-
-function showLoading() {
-  const overlay = document.getElementById('loading-overlay');
-  overlay.classList.add('show');
-  const steps = [
-    { text: 'VERIFYING IDENTITY...', step: 'CROSS-REFERENCING DATABASE' },
-    { text: 'ANALYSING BIOMETRICS...', step: `HEIGHT: ${userData.height}cm — CONFIRMED` },
-    { text: 'CHECKING WEIGHT...', step: `${userData.weight}kg — NOTED 👀` },
-    { text: 'CONSULTING MOTHERS GLOBALLY...', step: `${userData.mother} — VERIFIED` },
-    { text: 'RUNNING SKIN TONE ANALYSIS...', step: `${userData.skin} — ON FILE` },
-    { text: 'IDENTITY CONFIRMED!', step: 'ACCESS GRANTED. WELCOME, BIRTHDAY BOY.' },
-  ];
-  let i = 0;
-  let progress = 0;
-  const fill = document.getElementById('progressFill');
-  const loadText = document.getElementById('loadingText');
-  const loadStep = document.getElementById('loadingStep');
-
-  const interval = setInterval(() => {
-    if (i < steps.length) {
-      loadText.textContent = steps[i].text;
-      loadStep.textContent = steps[i].step;
-      progress = Math.min(100, (i + 1) / steps.length * 100);
-      fill.style.width = progress + '%';
-      i++;
-    } else {
-      clearInterval(interval);
-      setTimeout(() => {
-        overlay.classList.remove('show');
-        goToGame();
-      }, 700);
-    }
-  }, 700);
-}function goToGame() {
-  switchPage('page-game');
-  document.getElementById('game-name-display').textContent = userData.name.toUpperCase() || 'BIRTHDAY BOY';
-  initGame();
-}
-
-// ===================== PAGE SWITCHING =====================
-function switchPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
-}
-
-// ===================== FLAPPY BIRD =====================
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
-let bird = { x: 80, y: 250, vy: 0, size: 34 };
-let pipes = [];
-let pipeTimer = 0;
-const GRAVITY = 0.45;
-const FLAP = -8;
-const PIPE_WIDTH = 52;
-const GAP = 150;
-const PIPE_SPEED = 2.5;
-
-// Simple bird face (cartoon)
-function drawBird(x, y, size) {
-  ctx.save();
-  ctx.translate(x, y);
-
-  // Body
-  ctx.beginPath();
-  ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
-  ctx.fillStyle = '#FFD700';
-  ctx.fill();
-  ctx.strokeStyle = '#e6a800';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // Face text (initials)
-  ctx.fillStyle = '#0a0a0a';
-  ctx.font = `bold ${size * 0.5}px Bebas Neue, sans-serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  const initials = (userData.name || 'B').charAt(0).toUpperCase();
-  ctx.fillText(initials, 0, 0);
-
-  // Eye
-  ctx.beginPath();
-  ctx.arc(size * 0.15, -size * 0.15, size * 0.1, 0, Math.PI * 2);
-  ctx.fillStyle = '#0a0a0a';
-  ctx.fill();
-
-  ctx.restore();
-}
-
-function drawPipe(pipe) {
-  const gradient = ctx.createLinearGradient(pipe.x, 0, pipe.x + PIPE_WIDTH, 0);
-  gradient.addColorStop(0, '#2dc653');
-  gradient.addColorStop(1, '#1a8a38');
-
-  // Top pipe
-  ctx.fillStyle = gradient;
-  ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.topH);
-  ctx.fillStyle = '#1a8a38';
-  ctx.fillRect(pipe.x - 4, pipe.topH - 20, PIPE_WIDTH + 8, 20);
-
-  // Bottom pipe
-  ctx.fillStyle = gradient;
-  ctx.fillRect(pipe.x, pipe.topH + GAP, PIPE_WIDTH, canvas.height - pipe.topH - GAP);
-  ctx.fillStyle = '#1a8a38';
-  ctx.fillRect(pipe.x - 4, pipe.topH + GAP, PIPE_WIDTH + 8, 20);
-}
-
-function drawBackground() {
-  const sky = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  sky.addColorStop(0, '#1a1a2e');
-  sky.addColorStop(1, '#16213e');
-  ctx.fillStyle = sky;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // Stars
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  const stars = [[30,40],[80,100],[150,20],[200,80],[300,30],[350,120],[60,200],[250,160]];
-  stars.forEach(([sx, sy]) => {
-    ctx.beginPath();
-    ctx.arc(sx, sy, 1.5, 0, Math.PI*2);
-    ctx.fill();
-  });
-
-  // Ground
-  ctx.fillStyle = '#0f3d0f';
-  ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
-  ctx.fillStyle = '#1a5c1a';
-  ctx.fillRect(0, canvas.height - 30, canvas.width, 6);
-}
-
-function drawScore() {
-  ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  ctx.fillRect(10, 10, 120, 36);
-  ctx.fillStyle = '#FFD700';
-  ctx.font = 'bold 14px Bebas Neue, sans-serif';
-  ctx.textAlign = 'left';
-  ctx.fillText(`SCORE: ${score}   BEST: ${bestScore}`, 18, 32);
-}
-
-function drawStartScreen() {
-  drawBackground();
-  drawBird(bird.x, bird.y, bird.size);
-  ctx.fillStyle = 'rgba(0,0,0,0.55)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#FFD700';
-  ctx.font = 'bold 32px Bebas Neue, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('TAP TO START', canvas.width / 2, canvas.height / 2 - 20);
-  ctx.fillStyle = 'rgba(245,240,232,0.5)';
-  ctx.font = '14px DM Sans, sans-serif';
-  ctx.fillText("Let's see if you can fly, birthday boy 😏", canvas.width / 2, canvas.height / 2 + 20);
-}
-
-function drawGameOverScreen() {
-  ctx.fillStyle = 'rgba(0,0,0,0.65)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#e63946';
-  ctx.font = 'bold 52px Bebas Neue, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('DEAD 💀', canvas.width / 2, canvas.height / 2 - 50);
-  ctx.fillStyle = '#FFD700';
-  ctx.font = 'bold 24px Bebas Neue, sans-serif';
-  ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height / 2);
-  ctx.fillStyle = 'rgba(245,240,232,0.6)';
-  ctx.font = '14px DM Sans, sans-serif';
-  ctx.fillText("Even birds have better days than this 😅", canvas.width / 2, canvas.height / 2 + 36);
-  ctx.fillStyle = 'rgba(245,240,232,0.4)';
-  ctx.font = '13px DM Sans, sans-serif';
-  ctx.fillText("Tap to try again", canvas.width / 2, canvas.height / 2 + 62);
-}
-
-function gameLoop() {
-  if (!gameRunning) return;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawBackground();
-
-  // Bird physics
-  bird.vy += GRAVITY;
-  bird.y += bird.vy;
-
-  // Pipes
-  pipeTimer++;
-  if (pipeTimer > 90) {
-    const topH = 60 + Math.random() * (canvas.height - GAP - 120);
-    pipes.push({ x: canvas.width, topH, scored: false });
-    pipeTimer = 0;
-  }
-
-  pipes.forEach(p => p.x -= PIPE_SPEED);
-  pipes = pipes.filter(p => p.x > -PIPE_WIDTH - 10);
-
-  // Score
-  pipes.forEach(p => {
-    if (!p.scored && p.x + PIPE_WIDTH < bird.x) {
-      p.scored = true;
-      score++;
-      if (score > bestScore) bestScore = score;
-    }
-  });
-
-  // Draw
-  pipes.forEach(drawPipe);
-  drawBird(bird.x, bird.y, bird.size);
-  drawScore();
-
-  // Collision
-  const r = bird.size / 2 - 4;
-  if (bird.y - r < 0 || bird.y + r > canvas.height - 30) {
-    endGame(); return;
-  }
-  for (const p of pipes) {
-    if (bird.x + r > p.x && bird.x - r < p.x + PIPE_WIDTH) {
-      if (bird.y - r < p.topH || bird.y + r > p.topH + GAP) {
-        endGame(); return;
-      }
-    }
-  }
-
-  animFrame = requestAnimationFrame(gameLoop);
-}
-
-function flap() {
-  if (gameOver) {
-    resetGame(); return;
-  }
-  if (!gameRunning) {
-    gameRunning = true;
-    animFrame = requestAnimationFrame(gameLoop);
-  }
-  bird.vy = FLAP;
-}
-
-function endGame() {
-  gameRunning = false;
-  gameOver = true;
-  cancelAnimationFrame(animFrame);
-  drawGameOverScreen();
-}
-
-function resetGame() {
-  cancelAnimationFrame(animFrame);
-  bird = { x: 80, y: 250, vy: 0, size: 34 };
-  pipes = [];
-  pipeTimer = 0;
-  score = 0;
-  gameRunning = false;
-  gameOver = false;
-  drawStartScreen();
-}function initGame() {
-  resetGame();
-}
-
-canvas.addEventListener('click', flap);
-document.addEventListener('keydown', (e) => {
-  if (e.code === 'Space' && document.getElementById('page-game').classList.contains('active')) {
-    e.preventDefault();
-    flap();
-  }
-});
-
-// ===================== FINALE =====================
-function goToFinale() {
-  cancelAnimationFrame(animFrame);
-  switchPage('page-finale');
-  document.getElementById('finaleName').textContent = userData.name || 'The Birthday Legend';
-  document.getElementById('ageReveal').textContent = userData.age || '';
-  document.getElementById('finaleMsg').textContent =
-    `${userData.age} years of being absolutely ${userData.skin}-toned and ${userData.height}cm of pure chaos.\nHappy Birthday, ${userData.name}! 🎉`;
-  spawnConfetti();
-  // Auto-play music
-  setTimeout(() => {
-    const audio = document.getElementById('birthdayAudio');
-    audio.play().catch(() => {});
-    musicPlaying = true;
-    document.querySelector('.music-btn').innerHTML = '⏸ &nbsp;PAUSE MUSIC';
-  }, 800);
-}
-
-function toggleMusic() {
-  const audio = document.getElementById('birthdayAudio');
-  const btn = document.querySelector('.music-btn');
-  if (musicPlaying) {
-    audio.pause();
-    btn.innerHTML = '<span class="music-note" id="musicNote">♪</span> &nbsp;PLAY BIRTHDAY SONG';
-    musicPlaying = false;
-  } else {
-    audio.play();
-    btn.innerHTML = '⏸ &nbsp;PAUSE MUSIC';
-    musicPlaying = true;
-  }
-}
-
-function spawnConfetti() {
-  const wrap = document.getElementById('confettiWrap');
-  wrap.innerHTML = '';
-  const colors = ['#FFD700','#e63946','#2dc653','#f8a100','#fff','#7b61ff'];
-  for (let i = 0; i < 60; i++) {
-    const el = document.createElement('div');
-    el.className = 'confetti-piece';
-    el.style.left = Math.random() * 100 + 'vw';
-    el.style.background = colors[Math.floor(Math.random() * colors.length)];
-    el.style.animationDuration = (2 + Math.random() * 4) + 's';
-    el.style.animationDelay = (Math.random() * 3) + 's';
-    el.style.width = (8 + Math.random() * 8) + 'px';
-    el.style.height = (10 + Math.random() * 10) + 'px';
-    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    wrap.appendChild(el);
-  }
-}
-
-  function turnOnLight() {
-    const box = document.getElementById("lightBox");
-    box.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      switchPage("page-light");
-    }, 200);
-  }
-
-  function showColourPhoto() {
-    document.getElementById("photoModal").classList.add("show");
-  }
-
-  function closeModal() {
-    document.getElementById("photoModal").classList.remove("show");
-    goToLogin();
-  }
-
-  function goToLogin() {
-    switchPage("page-login");
-  }
-
-</script>
-</body>
-</html>
+      
