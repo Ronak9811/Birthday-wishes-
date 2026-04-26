@@ -733,4 +733,474 @@
         </div>
       </div>
 
+      <!-- RIGHT: WHITE -->
+      <div class="split-panel split-white">
+        <div class="choice-card card-white">
+          <div class="card-label card-label-dark">I GOT</div>
+          <div class="card-title card-title-white">WHITE</div>
+          <div class="card-gold-line"></div>
+          <ul class="card-features card-features-dark">
+            <li><span class="feat-icon">🎓</span><span>Topper</span></li>
+            <li><span class="feat-icon">💪</span><span>Bodybuilder</span></li>
+            <li><span class="feat-icon">🏃</span><span>Sportsman</span></li>
+            <li><span class="feat-icon">🎯</span><span>Discipline</span></li>
+          </ul>
+          <button class="choose-btn choose-btn-white" onclick="showWhiteResult()">CHOOSE WHITE &nbsp;&nbsp;→</button>
+        </div>
+ <button class="modal-continue" onclick="closeModal(); goToLogin()">Continue &nbsp;:)</button>
+    </div>
+  </div>
+
+
+  
+  <!-- PAGE WHITE RESULT -->
+  <div class="page" id="page-white-result">
+    <div class="white-result-content">
+      <div class="white-emoji">🤍</div>
+      <div class="white-result-title">White.</div>
+      <div class="white-result-msg">Sure bro. 🙂</div>
+    </div>
+  </div>
+
+  <!-- PAGE 1: LOGIN -->
+<div class="page" id="page-login">
+  <div class="signin-bg">
+    <div class="glare glare-1"></div>
+    <div class="glare glare-2"></div>
+    <div class="glare glare-3"></div>
+    <div class="signin-card">
+      <div class="signin-avatar">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="signin-title">Sign In</div>
+      <div class="signin-underline"></div>
+
+      <div class="si-field-label">Name</div>
+      <div class="si-input-wrap">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <input type="text" id="inp-name" placeholder="Enter your full name" class="si-input"/>
+      </div>
+
+      <div class="si-field-label">Skin Colour</div>
+      <div class="si-input-wrap si-select-wrap">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <select id="inp-skin" class="si-input si-select">
+          <option value="" disabled selected>Select your skin colour</option>
+          <option>Chocolate Black</option><option>Charcoal Black</option><option>Extra Black</option><option>Blackhole Black</option>
+        </select>
+        <div class="si-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+
+      <div class="si-field-label">Age</div>
+      <div class="si-input-wrap">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <input type="number" id="inp-age" placeholder="Enter your age" class="si-input"/>
+      </div>
+
+      <div class="si-field-label">Height (cm)</div>
+      <div class="si-input-wrap si-select-wrap">
+        <div class="si-icon" style="font-size:22px; background: linear-gradient(145deg,#4c1d95,#6d28d9);">📏</div>
+        <select id="inp-height" class="si-input si-select" onchange="handleHeightChange(this)">
+          <option value="" disabled selected>Select your height</option>
+          <option value="100">100 cm</option>
+          <option value="50">50 cm</option>
+          <option value="10">10 cm</option>
+          <option value="300" class="height-disabled">300 cm</option>
+        </select>
+        <div class="si-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div id="height-joke" class="height-joke" style="display:none;">😂 300cm? Really bro?</div>
+
+      <div class="si-field-label">Weight (kg)</div>
+      <div class="si-input-wrap">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <input type="number" id="inp-weight" placeholder="Enter your weight (kg)" class="si-input"/>
+      </div>
+
+      <div class="si-error" id="errorMsg"></div>
+
+      <button class="si-submit-btn" onclick="attemptLogin()">
+        <span>Sign In</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+ <div class="page" id="page-game">
+  <div class="game-wrap">
+    <div class="game-header">
+      <div class="game-title">FLAPPY BOY🐦‍⬛</div>
+    </div>
+    <canvas id="gameCanvas" width="380" height="480"></canvas>
+    <div class="game-controls">
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: FINALE -->
+<div class="page" id="page-finale">
+  <div class="confetti-wrap" id="confettiWrap"></div>
+  <div class="age-reveal" id="ageReveal"></div>
+  <div class="finale-content">
+    <div class="finale-badge">🎂 HAPPY BIRTHDAY</div>
+    <div class="finale-photo-wrap" id="finalePhotoWrap">
+      <div class="photo-placeholder">
+        🎂
+        <span>PHOTO HERE</span>
+      </div>
+    </div>
+    <div class="finale-name" id="finaleName">The Legend Himself</div>
+    <div class="finale-gold-line"></div>
+    <div class="finale-msg" id="finaleMsg">
+      Another year older, another year more legendary.<br/>
+      May your day be as extraordinary as you are — almost.
+    </div>
+    <button class="music-btn" onclick="toggleMusic()">
+      <span class="music-note" id="musicNote">♪</span> &nbsp;PLAY BIRTHDAY SONG
+    </button>
+  </div>
+</div>
+
+<!-- Hidden audio -->
+
+
+<script>
+// ===================== STATE =====================
+let userData = {};
+let gameRunning = false;
+let gameOver = false;
+let animFrame;
+let score = 0;
+let bestScore = 0;
+let musicPlaying = false;
+
+// ===================== PAGE SWITCHING =====================
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ===================== PAGE 0: DARK INTRO =====================
+function turnOnLight() {
+  const box = document.getElementById('lightBox');
+  if (box) box.style.transform = 'scale(0.95)';
+  setTimeout(() => { switchPage('page-light'); }, 200);
+}
+
+// ===================== PAGE 0.5: COLOUR CHOICE =====================
+function showColourPhoto() {
+  document.getElementById('photoModal').classList.add('show');
+}
+
+function showWhiteResult() {
+  switchPage('page-white-result');
+}
+
+function closeModal() {
+  document.getElementById('photoModal').classList.remove('show');
+}
+
+function goToLogin() {
+  switchPage('page-login');
+}
+function attemptLogin() {
+  const name   = document.getElementById('inp-name').value.trim();
+  const age    = document.getElementById('inp-age').value.trim();
+  const height = document.getElementById('inp-height').value;
+  const weight = document.getElementById('inp-weight').value.trim();
+  const skin   = document.getElementById('inp-skin').value;
+  const err    = document.getElementById('errorMsg');
+
+  if (!name || !age || !height || !weight || !skin) {
+    err.textContent = '⚠ Fill in all fields to proceed!';
+    return;
+  }
+  err.textContent = '';
+  userData = { name, age, height, weight, skin };
+  showLoading();
+}
+
+function showLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  overlay.classList.add('show');
+  const steps = [
+    { text: 'VERIFYING IDENTITY...', step: 'CROSS-REFERENCING DATABASE' },
+    { text: 'ANALYSING BIOMETRICS...', step: 'HEIGHT — CONFIRMED' },
+    { text: 'CHECKING WEIGHT...', step: 'NOTED 👀' },
+    { text: 'SCANNING BIOMETRIC DATA...', step: 'IDENTITY LOCKED IN' },
+    { text: 'RUNNING SKIN TONE ANALYSIS...', step: 'ON FILE' },
+    { text: 'IDENTITY CONFIRMED!', step: 'ACCESS GRANTED. WELCOME, BIRTHDAY BOY.' },
+  ];
+  let i = 0;
+  const fill     = document.getElementById('progressFill');
+  const loadText = document.getElementById('loadingText');
+  const loadStep = document.getElementById('loadingStep');
+
+  const interval = setInterval(() => {
+    if (i < steps.length) {
+      loadText.textContent = steps[i].text;
+      loadStep.textContent = steps[i].step;
+      fill.style.width = ((i + 1) / steps.length * 100) + '%';
+      i++;
+    } else {
+      clearInterval(interval);
+      setTimeout(() => {
+        overlay.classList.remove('show');
+        goToGame();
+      }, 700);
+    }
+  }, 700);
+} 
+        goToGame();
+      }, 700);
+    }
+  }, 700);
+}
+
+function goToGame() {
+  switchPage('page-game');
+  const el = document.getElementById('game-name-display');
+  if (el) el.textContent = (userData.name || 'BIRTHDAY BOY').toUpperCase();
+  initGame();
+}
+
+// ===================== HEIGHT JOKE =====================
+function handleHeightChange(sel) {
+  const joke = document.getElementById('height-joke');
+  if (sel.value === '300') {
+    if (joke) joke.style.display = 'block';
+    sel.value = '';
+  } else {
+    if (joke) joke.style.display = 'none';
+  }
+}
+
+// ===================== FLAPPY BIRD =====================
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+const birdImg = new Image();
+birdImg.src ="./Bird_image.jpg"
+
+let bird = { x: 80, y: 240, vy: 0, size: 44 };
+let pipes = [];
+let pipeTimer = 0;
+const GRAVITY = 0.15;
+const FLAP = -5.5;
+const PIPE_WIDTH = 75;
+const GAP = 210;
+const PIPE_SPEED = 2.0;
+
+function drawBird(x, y, size) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.beginPath();
+  ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
+  ctx.closePath();
+  ctx.clip();
+  if (birdImg.complete && birdImg.naturalWidth > 0) {
+    ctx.drawImage(birdImg, -size/2, -size/2, size, size);
+  } else {
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(-size/2, -size/2, size, size);
+  }
+  ctx.restore();
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.beginPath();
+  ctx.arc(0, 0, size/2, 0, Math.PI*2);
+  ctx.strokeStyle = '#FFD700';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawPipe(pipe) {
+  const g = ctx.createLinearGradient(pipe.x, 0, pipe.x + PIPE_WIDTH, 0);
+  g.addColorStop(0, '#2dc653');
+  g.addColorStop(1, '#1a7a38');
+  ctx.fillStyle = g;
+  ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.topH);
+  ctx.fillStyle = '#1a7a38';
+  ctx.fillRect(pipe.x - 5, pipe.topH - 22, PIPE_WIDTH + 10, 22);
+  ctx.fillStyle = g;
+  ctx.fillRect(pipe.x, pipe.topH + GAP, PIPE_WIDTH, canvas.height - pipe.topH - GAP);
+  ctx.fillStyle = '#1a7a38';
+  ctx.fillRect(pipe.x - 5, pipe.topH + GAP, PIPE_WIDTH + 10, 22);
+}
+
+function drawBackground() {
+  const sky = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  sky.addColorStop(0, '#0d0d1f');
+  sky.addColorStop(1, '#1a1a3a');
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  [[40,30],[100,80],[180,20],[250,60],[330,25],[60,180],[200,140],[310,100]].forEach(([sx,sy]) => {
+    ctx.beginPath(); ctx.arc(sx, sy, 1.2, 0, Math.PI*2); ctx.fill();
+  });
+  ctx.fillStyle = '#0f3d0f';
+  ctx.fillRect(0, canvas.height - 28, canvas.width, 28);
+  ctx.fillStyle = '#1a5c1a';
+  ctx.fillRect(0, canvas.height - 28, canvas.width, 5);
+}
+
+function drawHUD() {
+  ctx.fillStyle = 'rgba(0,0,0,0.55)';
+  ctx.beginPath();
+  ctx.rect(10, 10, 165, 34);
+  ctx.fill();
+  ctx.fillStyle = '#FFD700';
+  ctx.font = 'bold 13px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('SCORE: ' + score + '   BEST: ' + bestScore, 18, 31);
+}
+
+function drawStartScreen() {
+  drawBackground();
+  drawBird(bird.x, bird.y, bird.size);
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#FFD700';
+  ctx.font = 'bold 30px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('TAP TO START', canvas.width/2, canvas.height/2 - 24);
+  ctx.fillStyle = 'rgba(245,240,232,0.5)';
+  ctx.font = '13px sans-serif';
+  ctx.fillText('Score 5 to escape this game 😏', canvas.width/2, canvas.height/2 + 10);
+}
+
+function drawGameOverScreen() {
+  ctx.fillStyle = 'rgba(0,0,0,0.72)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 17px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Even birds have better days than you bro', canvas.width/2, canvas.height/2 - 48);
+  ctx.fillStyle = '#FFD700';
+  ctx.font = 'bold 28px sans-serif';
+  ctx.fillText('Score: ' + score, canvas.width/2, canvas.height/2 + 2);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '13px sans-serif';
+  ctx.fillText('Tap to try again', canvas.width/2, canvas.height/2 + 36);
+} 
+function drawLevelClearScreen() {
+  ctx.fillStyle = 'rgba(0,0,0,0.72)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#2dc653';
+  ctx.font = 'bold 36px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('LEVEL CLEAR! 🎉', canvas.width/2, canvas.height/2 - 52);
+  ctx.fillStyle = '#FFD700';
+  ctx.font = 'bold 20px sans-serif';
+  ctx.fillText('Final Score: ' + score, canvas.width/2, canvas.height/2 - 8);
+  ctx.fillStyle = 'rgba(245,240,232,0.6)';
+  ctx.font = '13px sans-serif';
+  ctx.fillText('Moving on...', canvas.width/2, canvas.height/2 + 20);
+  setTimeout(() => goToFinale(), 2200);
+}
+
+function gameLoop() {
+  if (!gameRunning) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBackground();
+
+  bird.vy += GRAVITY;
+  bird.y  += bird.vy;
+
+  pipeTimer++;
+  if (pipeTimer > 130) {
+    const topH = 55 + Math.random() * (canvas.height - GAP - 110);
+    pipes.push({ x: canvas.width, topH, scored: false });
+    pipeTimer = 0;
+  }
+  pipes.forEach(p => { p.x -= PIPE_SPEED; });
+  pipes = pipes.filter(p => p.x > -PIPE_WIDTH - 10);
+
+  pipes.forEach(p => {
+    if (!p.scored && p.x + PIPE_WIDTH < bird.x) {
+      p.scored = true;
+      score++;
+      if (score > bestScore) bestScore = score;
+      if (score >= 5) { endGame(true); }
+    }
+  });
+
+  pipes.forEach(drawPipe);
+  drawBird(bird.x, bird.y, bird.size);
+  drawHUD();
+
+  const r = bird.size / 2 - 5;
+  if (bird.y - r < 0 || bird.y + r > canvas.height - 28) { endGame(false); return; }
+  for (const p of pipes) {
+    if (bird.x + r > p.x && bird.x - r < p.x + PIPE_WIDTH) {
+      if (bird.y - r < p.topH || bird.y + r > p.topH + GAP) { endGame(false); return; }
+    }
+  }
+
+  animFrame = requestAnimationFrame(gameLoop);
+}
+
+function flap() {
+  if (gameOver) { resetGame(); return; }
+  if (!gameRunning) { gameRunning = true; animFrame = requestAnimationFrame(gameLoop); }
+  bird.vy = FLAP;
+}
+
+function endGame(levelClear) {
+  if (!gameRunning) return;
+  gameRunning = false;
+  gameOver = true;
+  cancelAnimationFrame(animFrame);
+  if (levelClear) { drawLevelClearScreen(); } else { drawGameOverScreen(); }
+}
+
+function resetGame() {
+  cancelAnimationFrame(animFrame);
+  bird = { x: 80, y: 240, vy: 0, size: 44 };
+  pipes = [];
+  pipeTimer = 0;
+  score = 0;
+  gameRunning = false;
+  gameOver = false;
+  drawStartScreen();
+}
+
+function initGame() { resetGame(); }
+
+canvas.addEventListener('click', flap);
+document.addEventListener('keydown', function(e) {
+  if (e.code === 'Space' && document.getElementById('page-game').classList.contains('active')) {
+    e.preventDefault();
+    flap();
+  }
+});
+
+function toggleMusic() {
+  const btn = document.querySelector('.music-btn');
+  if (btn) btn.innerHTML = musicPlaying ? '<span>♪</span> PLAY BIRTHDAY SONG' : '⏸ PAUSE MUSIC';
+  musicPlaying = !musicPlaying;
+}
+
+function spawnConfetti() {
+  const wrap = document.getElementById('confettiWrap');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  const colors = ['#FFD700','#e63946','#2dc653','#f8a100','#fff','#7b61ff'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = (Math.random() * 100) + 'vw';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDuration = (2 + Math.random() * 4) + 's';
+    el.style.animationDelay = (Math.random() * 3) + 's';
+    el.style.width = (8 + Math.random() * 8) + 'px';
+    el.style.height = (10 + Math.random() * 10) + 'px';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    wrap.appendChild(el);
+  }
+}
+</script>
+
       
