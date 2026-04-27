@@ -934,13 +934,13 @@ function turnOnLight() {
 
 // ===================== PAGE 0.5: COLOUR CHOICE =====================
 function showColourPhoto() {
-  var snd = document.getElementById('Black.mp3');
+  var snd = document.getElementById('audio1');
   if (snd) { snd.currentTime = 0; snd.play().catch(function(){}); }
   document.getElementById('photoModal').classList.add('show');
 }
 
 function showWhiteResult() {
-  var snd = document.getElementById('Screem.png');
+  var snd = document.getElementById('audio2');
   if (snd) { snd.currentTime = 0; snd.play().catch(function(){}); }
   document.getElementById('whitePhotoModal').classList.add('show');
 }
@@ -956,7 +956,6 @@ function closeModal() {
 function goToLogin() {
   switchPage('page-login');
 }
-
 
 // ===================== LOGIN =====================
 function attemptLogin() {
@@ -1031,7 +1030,7 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 const birdImg = new Image();
-birdImg.src = 'Bird.jpg';
+birdImg.src = 'Bird.png';
 
 let bird = { x: 80, y: 240, vy: 0, size: 44 };
 let pipes = [];
@@ -1132,6 +1131,7 @@ function drawGameOverScreen() {
   ctx.font = '13px sans-serif';
   ctx.fillText('Tap to try again', canvas.width/2, canvas.height/2 + 36);
 }
+
 function drawLevelClearScreen() {
   ctx.fillStyle = 'rgba(0,0,0,0.78)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -1236,94 +1236,7 @@ function goToFinale() {
 }
 
 function toggleMusic() {
-  // music removed
-}
-
-function goToFinalePage() {
-  document.getElementById('andFinallyOverlay').style.display = 'none';
-  switchPage('page-birthday-final');
-  spawnFinaleConfetti();
-  var snd = document.getElementById('Birthdaysong.mp3');
-  if (snd) { snd.currentTime = 0; snd.play().catch(function(){}); }
-}
-
-function spawnFinaleConfetti() {
-  const wrap = document.getElementById('finalConfetti');
-  if (!wrap) return;
-  wrap.innerHTML = '';
-  const colors = ['#FFD700','#e63946','#2dc653','#f8a100','#ffffff','#7b61ff','#ff69b4','#00cfff','#ff4500','#adff2f'];
-  const shapes = ['2px','50%'];
-  for (let i = 0; i < 120; i++) {
-    const el = document.createElement('div');
-    el.className = 'fc';
-    el.style.left = (Math.random() * 100) + 'vw';
-    el.style.background = colors[Math.floor(Math.random() * colors.length)];
-    el.style.animationDuration = (2.5 + Math.random() * 4) + 's';
-    el.style.animationDelay = (Math.random() * 5) + 's';
-    el.style.width = (7 + Math.random() * 9) + 'px';
-    el.style.height = (10 + Math.random() * 12) + 'px';
-    el.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
-    el.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
-    wrap.appendChild(el);
-  }
-}
-
-function checkBannedName(input) {
-  var banned = ['ronak', 'bone', 'bona'];
-  var val = input.value.toLowerCase().replace(/\s+/g, '');
-  for (var i = 0; i < banned.length; i++) {
-    if (val.includes(banned[i])) {
-      input.value = '';
-      var err = document.getElementById('errorMsg');
-      if (err) {
-        err.textContent = '⚠️ Nice try bro 😂 That name is not allowed here!';
-        setTimeout(function(){ err.textContent = ''; }, 3000);
-      }
-      return;
-    }
-  }
-}
-
-function spawnConfetti() {
-  const wrap = document.getElementById('confettiWrap');
-  if (!wrap) return;
-  wrap.innerHTML = '';
-  const colors = ['#FFD700','#e63946','#2dc653','#f8a100','#fff','#7b61ff'];
-  for (let i = 0; i < 60; i++) {
-    const el = document.createElement('div');
-    el.className = 'confetti-piece';
-    el.style.left = (Math.random() * 100) + 'vw';
-    el.style.background = colors[Math.floor(Math.random() * colors.length)];
-    el.style.animationDuration = (2 + Math.random() * 4) + 's';
-    el.style.animationDelay = (Math.random() * 3) + 's';
-    el.style.width = (8 + Math.random() * 8) + 'px';
-    el.style.height = (10 + Math.random() * 10) + 'px';
-    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    wrap.appendChild(el);
-  }
-}
-
-// Expose functions globally so onclick= attributes can find them
-window.turnOnLight       = turnOnLight;
-window.showColourPhoto   = showColourPhoto;
-window.showWhiteResult   = showWhiteResult;
-window.closeModal        = closeModal;
-window.goToLogin         = goToLogin;
-window.attemptLogin      = attemptLogin;
-window.handleHeightChange= handleHeightChange;
-window.resetGame         = resetGame;
-window.goToFinale        = goToFinale;
-window.toggleMusic       = toggleMusic;
-window.goToFinalePage    = goToFinalePage;
-window.closeWhiteModal   = closeWhiteModal;
-window.spawnFinaleConfetti = spawnFinaleConfetti;
-window.checkBannedName    = checkBannedName;
-
-}); // end DOMContentLoaded
-</script>
-
-
-<!-- PAGE FINALE: BIRTHDAY BOY -->
+  // music remove
 <div class="page" id="page-birthday-final">
   <div id="finalConfetti"></div>
   <div style="width:100vw; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#1a0a00; padding:0; margin:0; position:relative; z-index:1;">
@@ -1332,15 +1245,16 @@ window.checkBannedName    = checkBannedName;
 </div>
 
 
-<audio id="Black.mp3" preload="auto">
-  <source src="./Black.mp3">
+<audio id="audio1" preload="auto">
+  <source src="Black.mp3" type="audio/mpeg"/>
 </audio>
 
-<audio id="Screem.png" preload="auto">
-  <source src="./Screem.mp3">
+<audio id="audio2" preload="auto">
+  <source src="Screen.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="Birthdaysong.mp3" preload="auto">
- <source src="./Birthdaysong.mp3">
+
+<audio id="audio3" preload="auto">
+  <source src="Birthdaysong.mp3" type="audio/mpeg"/>
 </audio>
 </body>
 </html>
