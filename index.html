@@ -908,8 +908,6 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-
 // ===================== STATE =====================
 let userData = {};
 let gameRunning = false;
@@ -1236,7 +1234,7 @@ function goToFinale() {
 }
 
 function toggleMusic() {
-  // music remove
+  // music removed
 }
 
 function goToFinalePage() {
@@ -1304,22 +1302,8 @@ function spawnConfetti() {
 }
 
 // Expose functions globally so onclick= attributes can find them
-window.turnOnLight       = turnOnLight;
-window.showColourPhoto   = showColourPhoto;
-window.showWhiteResult   = showWhiteResult;
-window.closeModal        = closeModal;
-window.goToLogin         = goToLogin;
-window.attemptLogin      = attemptLogin;
-window.handleHeightChange= handleHeightChange;
-window.resetGame         = resetGame;
-window.goToFinale        = goToFinale;
-window.toggleMusic       = toggleMusic;
-window.goToFinalePage    = goToFinalePage;
-window.closeWhiteModal   = closeWhiteModal;
-window.spawnFinaleConfetti = spawnFinaleConfetti;
-window.checkBannedName    = checkBannedName;
 
-}); // end DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() { if(document.getElementById('gameCanvas')) initGame(); });
 </script>
 
 
@@ -1333,15 +1317,14 @@ window.checkBannedName    = checkBannedName;
 
 
 <audio id="audio1" preload="auto">
-  <source src="Black.mp3" type="audio/mpeg"/>
+  <source src="./Black.mp3" type="audio/mpeg"/>
 </audio>
 
 <audio id="audio2" preload="auto">
   <source src="./Screen.mp3" type="audio/mpeg"/>
 </audio>
-
 <audio id="audio3" preload="auto">
-  <source src="Birthdaysong.mp3" type="audio/mpeg"/>
+  <source src="./Birthdaysong.mp3" type="audio/mpeg"/>
 </audio>
 </body>
 </html>
