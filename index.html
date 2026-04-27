@@ -1028,14 +1028,15 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 const birdImg = new Image();
+birdImg.id = 'bird';
 birdImg.src = 'Bird.png';
 
 let bird = { x: 80, y: 240, vy: 0, size: 44 };
 let pipes = [];
 let pipeTimer = 0;
-const GRAVITY = 0.15;
+const GRAVITY = 0.22;
 const FLAP = -5.5;
-const PIPE_WIDTH = 75;
+const PIPE_WIDTH = 52;
 const GAP = 210;
 const PIPE_SPEED = 2.0;
 
@@ -1189,6 +1190,8 @@ function flap() {
   if (gameOver) { resetGame(); return; }
   if (!gameRunning) { gameRunning = true; animFrame = requestAnimationFrame(gameLoop); }
   bird.vy = FLAP;
+  var tap = document.getElementById('tapSound');
+  if (tap) { tap.currentTime = 0; tap.play().catch(function(){}); }
 }
 
 function endGame(levelClear) {
@@ -1317,14 +1320,18 @@ document.addEventListener('DOMContentLoaded', function() { if(document.getElemen
 
 
 <audio id="audio1" preload="auto">
-  <source src="./Black.mp3" type="audio/mpeg"/>
+  <source src="Black.mp3" type="audio/mpeg"/>
 </audio>
 
 <audio id="audio2" preload="auto">
   <source src="./Screen.mp3" type="audio/mpeg"/>
 </audio>
 <audio id="audio3" preload="auto">
-  <source src="./Birthdaysong.mp3" type="audio/mpeg"/>
+  <source src="Birthdaysong.mp3" type="audio/mpeg"/>
+</audio>
+
+<audio id="tapSound" preload="auto">
+  <source src="Tap.mp3" type="audio/mpeg"/>
 </audio>
 </body>
 </html>
